@@ -1,15 +1,9 @@
-# actividad
+# github-activity-tracker
 
-To install dependencies:
+Source: [github user activity CLI](https://roadmap.sh/projects/github-user-activity)
 
-```bash
-bun install
-```
+When running this you should get a list of the public events made for the user.
 
-To run:
+args: `<username>`
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+example: `node ./src/index.js srlbel`
