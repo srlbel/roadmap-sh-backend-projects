@@ -1,0 +1,12 @@
+{
+  "name": "actividad",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./src/index.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "figlet": "^1.8.0"
+  }
+}
