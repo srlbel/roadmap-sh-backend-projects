@@ -13,3 +13,6 @@ summary --month <month>     # (Optional) Show the total of the records for a mon
 delete --id <id>            # Delete a record 
 update --id <id> --description <description> --amount <amount>          # Update a record given an id, description and amount are optional
 ```
+
+## TODO
+- implement a filter by year and month, then apply a reduce to sum the amounts. **main.rs line 64**
