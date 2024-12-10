@@ -1,4 +1,4 @@
-# backend-projects
+# Roadmap.sh Backend Projects
 Misc projects from roadmap.sh
 
 | Project              | Type | Directory                                    |
