@@ -1,4 +1,4 @@
-# github-activity-tracker
+# github-user-activity
 
 Source: [github user activity CLI](https://roadmap.sh/projects/github-user-activity)
 
