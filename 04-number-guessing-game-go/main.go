@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -14,38 +16,60 @@ type Game struct {
 	difficulty    string
 }
 
-func game(settings Game) {
-	fmt.Printf("%d %d %s \n", settings.attemps, settings.random_number, settings.difficulty)
+func gameLoop(settings Game) {
+	fmt.Printf("\nGreat, you have selected the %s difficulty level. \nlet's start the game\n\n", settings.difficulty)
+
+	for attemp := 1; attemp <= settings.attemps; attemp++ {
+		fmt.Printf("Enter your guess: ")
+
+		reader := bufio.NewReader(os.Stdin)
+		reader.ReadString('\n')
+
+		var guess int
+		fmt.Scanf("%d", &guess)
+
+		if guess == settings.random_number {
+			fmt.Printf("Congratulations, you  guess the number in %d attemps\n\n", attemp)
+			return
+		} else if guess > settings.random_number {
+			fmt.Printf("Incorrect! The number is less than %d \n\n", guess)
+		} else if guess < settings.random_number {
+			fmt.Printf("Incorrect! The number is great than %d \n\n", guess)
+		}
+
+	}
 }
 
 func main() {
-	rand.New(rand.NewSource((time.Now().UnixNano())))
-	var difficulty string
-	randonNumber := rand.Intn(MAX_NUMBER)
-
-	fmt.Println("Welcome to the Number Guessing Game!")
-	fmt.Printf("I'm thinking of a number between 1 and %d. \n", randonNumber)
-	fmt.Printf("Please select the difficulty level: \n1. Easy (10 chances) \n2. Medium (5 chances) \n3. Hard (3 chances)\n")
-	fmt.Scanln(&difficulty)
-
 	var settings Game
+	rand.NewSource((time.Now().UnixNano()))
+	randomNumber := rand.Intn(MAX_NUMBER)
+
+	fmt.Printf("Welcome to the Number Guessing Game!\n")
+	fmt.Printf("I'm thinking of a number between 1 and %d. \n\n", MAX_NUMBER)
+	fmt.Printf("Please select the difficulty level: \n1. Easy (10 chances) \n2. Medium (5 chances) \n3. Hard (3 chances)\n\n")
+
+	var difficulty int
+	fmt.Printf("Enter your choice: ")
+	fmt.Scanf("%d", &difficulty)
+
 	switch difficulty {
-	case "1":
+	case 1:
 		settings = Game{
 			attemps:       10,
-			random_number: randonNumber,
+			random_number: randomNumber,
 			difficulty:    "Easy",
 		}
-	case "2":
+	case 2:
 		settings = Game{
 			attemps:       5,
-			random_number: randonNumber,
+			random_number: randomNumber,
 			difficulty:    "Medium",
 		}
-	case "3":
+	case 3:
 		settings = Game{
 			attemps:       3,
-			random_number: randonNumber,
+			random_number: randomNumber,
 			difficulty:    "Hard",
 		}
 	default:
@@ -53,5 +77,5 @@ func main() {
 		return
 	}
 
-	game(settings)
+	gameLoop(settings)
 }
