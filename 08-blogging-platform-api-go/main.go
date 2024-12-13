@@ -46,6 +46,8 @@ func main() {
 	router.GET("/blogs", getBlogs)
 	router.GET("/blogs/:id", getBlogById)
 	router.POST("/blogs", postBlogs)
+	router.PUT("/blogs", updateBlogById)
+	router.DELETE("/blogs/:id", deleteBlogById)
 
 	router.Run("localhost:3001")
 
@@ -76,5 +78,53 @@ func getBlogById(c *gin.Context) {
 		}
 	}
 
-	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Blog not found"})
+}
+
+func updateBlogById(c *gin.Context) {
+	id := c.Param("id")
+	var newBlog blogData
+
+	if err := c.BindJSON(&newBlog); err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	for i := range blogs {
+		if blogs[i].ID == id {
+			blogs[i].Title = newBlog.Title
+			blogs[i].Content = newBlog.Content
+			blogs[i].Category = newBlog.Category
+			blogs[i].Tags = newBlog.Tags
+			blogs[i].UpdatedAt = time.Now().Local()
+
+			c.IndentedJSON(http.StatusOK, newBlog)
+			return
+		}
+	}
+
+	c.IndentedJSON(http.StatusNotFound, gin.H{
+		"error": "Record not found",
+	})
+}
+
+func deleteBlogById(c *gin.Context) {
+	id := c.Param("id")
+
+	for i := range blogs {
+		if blogs[i].ID == id {
+			blogs = append(blogs[:i], blogs[i+1:]...)
+
+			c.IndentedJSON(http.StatusOK, gin.H{
+				"message": "Blog deleted successfully",
+			})
+			return
+		}
+	}
+
+	c.IndentedJSON(http.StatusNotFound, gin.H{
+		"error": "Blog not found",
+	})
 }
