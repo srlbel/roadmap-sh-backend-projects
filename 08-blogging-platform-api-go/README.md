@@ -2,6 +2,6 @@
 > This is a work in progress.
 
 ### TODO
-- Add connection to database
-- Complete CRUD
-- Separate project in modules
+- [ ] Add connection to database
+- [x] Complete CRUD
+- [x] Separate project in modules
