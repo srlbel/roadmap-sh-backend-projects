@@ -1,0 +1,17 @@
+### Get blogs by tag
+GET http://localhost:3001/posts?term=programming
+
+### Get all blogs
+GET http://localhost:3001/blogs/
+
+### Post blog
+POST http://localhost:3001/blogs/
+Content-Type: application/json
+
+{
+  "id": "3",
+  "title": "Endpoint Test",
+  "content": "This content is a test",
+  "category": "Testing",
+  "tags": ["Programming", "Go", "Testing"]
+}
