@@ -1,5 +1,5 @@
 ### Get blogs by tag
-GET http://localhost:3001/posts?term=programming
+GET http://localhost:3001/posts?term=misc
 
 ### Get all blogs
 GET http://localhost:3001/blogs/
@@ -9,9 +9,22 @@ POST http://localhost:3001/blogs/
 Content-Type: application/json
 
 {
-  "id": "3",
-  "title": "Endpoint Test",
+  "title": "Endpoint Deleted",
   "content": "This content is a test",
   "category": "Testing",
-  "tags": ["Programming", "Go", "Testing"]
+  "tag": "after"
 }
+
+### Update a blog
+PUT http://localhost:3001/blogs/1
+Content-Type: application/json
+
+{
+  "title": "PUT NOW",
+  "content": "PUT PUT",
+  "category": "Testing",
+  "tag": "put"
+}
+
+### Delete a blog
+DELETE http://localhost:3001/blogs/1
