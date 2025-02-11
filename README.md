@@ -8,3 +8,4 @@ Misc projects from roadmap.sh
 |   3   | Expense Tracker       | CLI  | <li> [Rust](./03-expense-tracker-rs/)                                                     |
 |   4   | Number Guessing Game  | CLI  | <li> [Rust](./04-number-guessing-game-rs/) </li> <li> [Go](./04-number-guessing-game-go/) |
 |   8   | Blogging Platform API | API  | <li> [Go](./08-blogging-platform-api-go/)                                                 |
+|  10   | Expense Tracker API   | API  | <li> [TypeScript (Bun) WIP](./10-expense-tracker-api-ts/)                                 |
