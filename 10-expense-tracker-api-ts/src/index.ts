@@ -6,9 +6,7 @@ const app = new Hono();
 
 app.use(logger());
 
-app.get("/", (c) => {
-  return c.text("Expense Tracker root");
-});
+app.get("/", (c) => c.text("Expense Tracker root"));
 
 app.route("/api", api);
 
